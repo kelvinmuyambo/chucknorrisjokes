@@ -1,17 +1,19 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Joke } from 'src/app/models/joke';
+import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { loadJokeSuccess } from 'src/app/state/jokes/jokes.actions';
+import { selectJoke } from 'src/app/state/jokes/jokes.selectors';
 
 @Component({
   selector: 'app-joke-modal',
   templateUrl: './joke-modal.component.html',
   styleUrls: ['./joke-modal.component.css']
 })
-export class JokeModalComponent implements OnInit {
-  @Input() joke!: Joke | null;
-  @Output() onClose = new EventEmitter<void>();
+export class JokeModalComponent {
+  joke$ = this.store.select(selectJoke)
 
-  constructor() {}
+  constructor(private store: Store) { }
 
-  ngOnInit(): void {
+  closeJoke(): void{
+    this.store.dispatch(loadJokeSuccess({joke: null}))
   }
 }

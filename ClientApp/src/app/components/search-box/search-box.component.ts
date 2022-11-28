@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Joke } from 'src/app/models/joke';
-import { JokeService } from '../../services';
+import { Store } from '@ngrx/store';
+import { Joke } from '../../models/joke';
+import { loadJokes, loadJokeSuccess } from '../../state/jokes/jokes.actions';
+import { selectJokes } from '../../state/jokes/jokes.selectors';
 
 @Component({
   selector: 'app-search-box',
@@ -10,11 +11,11 @@ import { JokeService } from '../../services';
 })
 export class SearchBoxComponent {
   @Output() selectJoke = new EventEmitter<Joke>();
-  jokes$: Observable<Joke[]> = new Observable();
+  jokes$ = this.store.select(selectJokes)
   showOptions = false;
   query!: string;
 
-  constructor(private service: JokeService) { }
+  constructor(private store: Store) { }
 
   focus(e?: any): void {
     this.showOptions = !!this.query && this.query.length > 2;
@@ -27,11 +28,11 @@ export class SearchBoxComponent {
   change(e: any): void {
     this.focus();
     if (this.showOptions) {
-      this.jokes$ = this.service.search(this.query);
+      this.store.dispatch(loadJokes({ query: this.query }));
     }
   }
 
   select(joke: Joke): void {
-    this.selectJoke.emit(joke);
+    this.store.dispatch(loadJokeSuccess({ joke }));
   }
 }

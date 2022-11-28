@@ -4,11 +4,11 @@
         <p><i>Tap any of the categories below to get a random joke</i></p>
     </div>
     <div class="col-12 col-md-4 pt-1 pb-4 pb-md-1 pt-md-5">
-        <app-search-box (selectJoke)="selectJoke($event)"></app-search-box>
+        <app-search-box></app-search-box>
     </div>
 </div>
 <div class="col-6 offset-3 col-md-4 offset-md-4">
-    <app-category-card [category]="'random'" (click)="selectCategory('random')"></app-category-card>
+    <app-category-card [category]="'random'"></app-category-card>
 </div>
-<app-categories-list (selected)="selectCategory($event)" [categories]="categories$ | async"></app-categories-list>
-<app-joke-modal *ngIf="category" [joke]="joke$ | async" (onClose)="closeCategory()"></app-joke-modal>
+<app-categories-list></app-categories-list>
+<app-joke-modal></app-joke-modal>
