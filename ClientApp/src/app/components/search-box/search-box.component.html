@@ -1,0 +1,8 @@
+<div class="dropdown">
+    <input type="text" (focus)="focus($event)" (blur)="blur($event)" [(ngModel)]="query" (keyup)="change($event)" class="form-control" placeholder="Search for a Joke">
+    <ul *ngIf="showOptions" class="dropdown-menu show w-100 list-group list-group-flush">
+        <li class="list-group-item dropdown-item" (click)="select(item)" *ngFor="let item of jokes$ | async | slice : 0 : 10">
+            <i class="bi bi-quote"></i> {{item.value}}
+        </li>
+    </ul>
+  </div>

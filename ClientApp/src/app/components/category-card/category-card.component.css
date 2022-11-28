@@ -1,0 +1,7 @@
+.cursor-pointer{
+    cursor: pointer;
+}
+
+.card:hover{
+    border-color: grey;
+}

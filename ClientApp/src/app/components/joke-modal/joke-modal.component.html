@@ -1,0 +1,18 @@
+<div class="modal d-block">
+    <div class="modal-dialog modal-lg" *ngIf="joke">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p>
+                    <span *ngFor="let item of joke.categories" class="badge rounded-pill bg-info">{{item}}</span>
+                </p>
+                <h1><i class="bi bi-quote"></i></h1>
+                <p class="card-body">
+                    <b><i>{{joke.value}}</i></b>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button (click)="onClose.emit()" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
