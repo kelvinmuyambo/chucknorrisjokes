@@ -21,6 +21,11 @@ export const loadJokeSuccess = createAction(
   props<{ joke: Joke | null }>()
 );
 
+export const loader = createAction(
+  '[Jokes] Loading Jokes',
+  props<{ loading: boolean }>()
+);
+
 export const loadJokesFailure = createAction(
   '[Jokes] Load Jokes Failure',
   props<{ error: any }>()

@@ -1,7 +1,9 @@
-﻿namespace ChuckNorrisJokes.Interfaces
+﻿using ChuckNorrisJokes.Services;
+
+namespace ChuckNorrisJokes.Interfaces
 {
     public interface IBaseService<T>
     {
-        Task<IEnumerable<T>> GetAllAsync(string? param);
+        HttpClientService clientService { get; }
     }
 }

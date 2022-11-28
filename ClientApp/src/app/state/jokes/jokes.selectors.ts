@@ -14,3 +14,8 @@ export const selectJoke = createSelector(
   selectJokesState,
   (state: fromJokes.JokesState) => state.joke
 );
+
+export const selectLoading = createSelector(
+  selectJokesState,
+  (state: fromJokes.JokesState) => state.loading
+);

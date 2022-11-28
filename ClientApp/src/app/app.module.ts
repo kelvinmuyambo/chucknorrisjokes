@@ -17,6 +17,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { CategoriesEffects } from './state/categories/categories.effects';
 import * as fromJokes from './state/jokes/jokes.reducer';
 import { JokesEffects } from './state/jokes/jokes.effects';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { JokesEffects } from './state/jokes/jokes.effects';
     CategoryComponent,
     CategoryCardComponent,
     JokeModalComponent,
-    SearchBoxComponent
+    SearchBoxComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

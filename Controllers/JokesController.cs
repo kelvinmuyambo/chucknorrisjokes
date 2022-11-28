@@ -10,9 +10,7 @@ namespace ChuckNorrisJokes.Controllers
     {
         private IJokeService service;
 
-        public JokesController(IJokeService service) {
-            this.service = service;
-        }
+        public JokesController(IJokeService service) => this.service = service;
 
         [HttpGet]
         public Task<Joke> Get(string? category) => this.service.GetRandom(category);

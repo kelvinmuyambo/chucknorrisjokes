@@ -9,10 +9,8 @@ namespace ChuckNorrisJokes.Controllers
     [ApiController]
     public class CategoriesController : ControllerBase
     {
-        IBaseService<string> service;
-        public CategoriesController(IBaseService<string> service) { 
-            this.service = service;
-        }
+        ICategoryService service;
+        public CategoriesController(ICategoryService service) => this.service = service;
 
         [HttpGet]
         public Task<IEnumerable<string>> Get() => this.service.GetAllAsync("categories");

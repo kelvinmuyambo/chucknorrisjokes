@@ -10,7 +10,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IJokeService, JokeService>();
-builder.Services.AddScoped<IBaseService<string>, CategoriesService>();
+builder.Services.AddScoped<ICategoryService, CategoriesService>();
 
 var app = builder.Build();
 
